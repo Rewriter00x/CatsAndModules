@@ -1,0 +1,38 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:ios)
+
+platform :ios do
+  desc "Description of what the lane does"
+  lane :build_and_export do
+    # add actions here: https://docs.fastlane.tools/actions
+    increment_version_number(
+      xcodeproj: "./CatsViewer/CatsViewer.xcodeproj",
+      version_number: "1.1"
+    )
+    set_info_plist_value(path: "./CatsViewer/CatsViewer/Info.plist", key: "AppMode", value: "DOGS")
+    gym
+    firebase_app_distribution(service_credentials_file: "/Users/rewriter/LocalFiles/catsandmodulesburliai-7f17e05c7afc.json", 
+    ipa_path: "./output/CatsViewer.ipa",
+    release_notes: "Automatic release",
+    testers: "colossus00x@gmail.com, o.frankiv@ukma.edu.ua"
+    )
+  end
+
+  lane :take_screenshots do
+    snapshot
+  end
+end

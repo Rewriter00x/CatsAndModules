@@ -1,0 +1,24 @@
+# For more information about this configuration visit
+# https://docs.fastlane.tools/actions/gym/#gymfile
+
+# In general, you can use the options available
+# fastlane gym --help
+
+# Remove the # in front of the line to enable the option
+
+scheme("CatsViewer")
+
+sdk("iphoneos17.5")
+
+output_directory("./output")
+output_name("CatsViewer")
+
+clean(true)
+
+export_options({
+    method: "development",
+    thinning: "<thin-for-all-variants>",
+    provisioningProfiles: {
+        "ua.edu.ukma.apple-env.burliai.CatsViewer" => "c15dd7ff-0375-40fb-a9aa-05a10ad75298"
+    }
+})
