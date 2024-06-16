@@ -34,6 +34,6 @@ workflows:
             firebase:
                 firebase_service_account: $FIREBASE_SERVICE_ACCOUNT
                 ios:
-                    app_id: catsandmodulesburliai
+                    app_id: 1:560289106543:ios:1e10875d88d7f108149b9a
                     groups:
                         - devgroup
