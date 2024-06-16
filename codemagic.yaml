@@ -6,7 +6,6 @@ workflows:
         triggering:
             events:
                 - push
-                - commit
             branch_patterns:
                 - pattern: 'release_DanyloBurliai'
                   include: true
