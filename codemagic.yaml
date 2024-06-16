@@ -30,3 +30,10 @@ workflows:
                       --scheme "$XCODE_SCHEME"
         artifacts:
             - output/CatsViewer.ipa
+        publishing:
+            firebase:
+                firebase_service_account: $FIREBASE_SERVICE_ACCOUNT
+                ios:
+                    app_id: catsandmodulesburliai
+                    groups:
+                        - devgroup
