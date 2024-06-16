@@ -9,7 +9,7 @@ workflows:
                 - commit
             branch_patterns:
                 - pattern: 'release_DanyloBurliai'
-                include: true
+                  include: true
         environment:
             groups:
                 - firebase_credentials
