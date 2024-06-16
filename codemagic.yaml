@@ -15,8 +15,18 @@ workflows:
             ios_signing:
                 distribution_type: development
                 bundle_identifier: ua.edu.ukma.apple-env.burliai.CatsViewer
+            vars:
+                BUNDLE_ID: "ua.edu.ukma.apple-env.burliai.CatsViewer"
+                XCODE_WORKSPACE: "CatsAndModules_DanyloBurliai.xcworkspace"
+                XCODE_SCHEME: "CatsViewer"
+            xcode: latest
         scripts:
-            - name: Export IPA
-              script: sh ExportIPA.sh
+            - name: Set up provisioning profiles settings on Xcode project
+              script: xcode-project use-profiles
+            - name: Build ipa for distribution
+              script: |
+                  xcode-project build-ipa \
+                      --workspace "$CM_BUILD_DIR/$XCODE_WORKSPACE" \
+                      --scheme "$XCODE_SCHEME"
         artifacts:
             - output/CatsViewer.ipa
